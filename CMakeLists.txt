@@ -22,8 +22,9 @@ endif()
 
 
 
-add_executable(SDL_Template main.cpp
-        game.cpp
+add_executable(SDL_Template
+        src/main.cpp
+        src/game.cpp
 )
 
 
