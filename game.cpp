@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <entt/entt.hpp> // todo: try with just registry?
 
 Game::Game(const int width, const int height)
 {
@@ -44,6 +45,7 @@ Game::Game(const int width, const int height)
     SDL_SetRenderDrawColor(m_renderer, 96, 128, 255, 255);
     SDL_RenderClear(m_renderer);
     SDL_RenderPresent(m_renderer);
+
 }
 
 Game::~Game()
@@ -52,6 +54,11 @@ Game::~Game()
     SDL_DestroyWindow(m_window);
     SDL_Quit();
 }
+
+entt::registry& Game::GetRegistry() {
+    return m_registry;
+}
+
 
 void Game::ReadInput()
 {
