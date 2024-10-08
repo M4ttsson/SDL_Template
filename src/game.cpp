@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <entt/entt.hpp> // todo: try with just registry?
+//#include <entt/entt.hpp> // todo: try with just registry?
 
 Game::Game(const int width, const int height)
 {
@@ -50,6 +50,11 @@ Game::Game(const int width, const int height)
 
 Game::~Game()
 {
+    for (auto& [key, value]: m_textures)
+    {
+        SDL_DestroyTexture(value);
+    }
+
     SDL_DestroyRenderer(m_renderer);
     SDL_DestroyWindow(m_window);
     SDL_Quit();
@@ -59,6 +64,18 @@ entt::registry& Game::GetRegistry() {
     return m_registry;
 }
 
+SDL_Texture* Game::LoadTexture(const char *path, textures::TextureId textureId)
+{
+    SDL_Texture *texture = IMG_LoadTexture(m_renderer, path);
+    if (!texture)
+    {
+        printf("Failed to load texture: %s\n", SDL_GetError());
+        return nullptr;
+    }
+
+    m_textures.emplace(textureId, texture);
+    return texture;
+}
 
 void Game::ReadInput()
 {
@@ -75,9 +92,9 @@ void Game::ReadInput()
 
 void Game::Update()
 {
-    m_transform_system.update(m_registry);
-    m_movement_system.update(m_registry);
-    m_sprite_system.update(m_registry);
+    m_transformSystem.Update(m_registry);
+    m_movementSystem.Update(m_registry);
+    m_spriteSystem.Update(m_registry);
 }
 
 void Game::Render()
@@ -85,7 +102,7 @@ void Game::Render()
     SDL_SetRenderDrawColor(m_renderer, 96, 128, 255, 255);
     SDL_RenderClear(m_renderer);
 
-    m_sprite_system.render(m_registry, m_renderer);
+    m_spriteSystem.Render(m_registry, m_renderer);
 
     SDL_RenderPresent(m_renderer);
 }

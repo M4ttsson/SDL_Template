@@ -25,6 +25,16 @@ endif()
 add_executable(SDL_Template
         src/main.cpp
         src/game.cpp
+        src/game.h
+        src/components/SpriteComponent.h
+        src/components/TransformComponent.h
+        src/components/KeyInputComponent.h
+        src/systems/SpriteSystem.h
+        src/systems/SpriteSystem.cpp
+        src/systems/TransformSystem.cpp
+        src/systems/TransformSystem.h
+        src/systems/MovementSystem.cpp
+        src/systems/MovementSystem.h
 )
 
 
