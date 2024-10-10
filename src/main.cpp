@@ -1,18 +1,11 @@
-#include <iostream>
-#include <SDL2/SDL_image.h>
-#include <entt/entt.hpp>
-
-#include "game.h"
-#include "constants.h"
+#include "Game.h"
+#include "Constants.h"
 #include "components/KeyInputComponent.h"
 #include "components/SpriteComponent.h"
 #include "components/TransformComponent.h"
 
-// TODO: Consider installing SDL2 with conan
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-
 
 
     Game game(800, 600);

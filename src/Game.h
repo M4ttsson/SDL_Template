@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <entt/entity/registry.hpp>
 
-#include "constants.h"
+#include "Constants.h"
 #include "systems/MovementSystem.h"
 #include "systems/SpriteSystem.h"
 #include "systems/TransformSystem.h"

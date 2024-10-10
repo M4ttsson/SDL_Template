@@ -1,9 +1,8 @@
 
-#include "game.h"
+#include "Game.h"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-//#include <entt/entt.hpp> // todo: try with just registry?
+#include <SDL.h>
+#include <SDL_image.h>
 
 Game::Game(const int width, const int height)
 {
