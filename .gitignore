@@ -242,3 +242,6 @@ environment_run.ps1.env
 environment_run.sh.env
 
 # End of https://www.toptal.com/developers/gitignore/api/conan
+
+# auto generated conan file
+conan_provider.cmake
